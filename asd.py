@@ -4,36 +4,43 @@ import testli
 label=sg.Text("Todo")
 inp_bx=sg.InputText(tooltip="Enter the Content",key="Addi")
 editbutton=sg.Button("Edit")
-listbox=sg.Listbox(values=[i for i in testli.Realtd()],size=[45,10],enable_events=True,key="listbox")
+listbox=sg.Listbox(values=[i[:-1] for i in testli.Realtd()],size=[45,10],enable_events=True,key="listbox")
 add_button=sg.Button("Add")
+complete_button=sg.Button("Complete")
+exitbut=sg.Button("Exit")
+
+
 layout = [ [label],
           [inp_bx,add_button],
          [listbox,editbutton],
+         [complete_button,exitbut]
                     
           ]
 
 
 # Create the window
 window = sg.Window("Todo List",layout,
-                   font=("TimesNewRoman",23))      # Part 3 - Window Defintion
+                   font=("TimesNewRoman",23))      
 
 while True:
     
     event,value=window.read()
-    if event==sg.WIN_CLOSED:
+    if event==sg.WIN_CLOSED or event=="Exit":
         break 
     elif event=="Add":
         testli.writeltd(value["Addi"]+"\n")
-        window['listbox'].update(values=[i for i in testli.Realtd()])
+        window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
     elif event=="Edit":
         testli.edit_txt(value["listbox"],value["Addi"]+"\n")
-        window['listbox'].update(values=[i for i in testli.Realtd()])
+        window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
     elif event=="listbox":
         window['Addi'].update(value=value['listbox'][0])
+    elif event=="Complete":
+        testli.complete(value['listbox'][0])
+        window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
     
                        
-# Do something with the information gathered
     print(event)
     print(value)
 # Finish up by removing from the screen
-window.close()                                  # Part 5 - Close the Window
+window.close()                                 

@@ -26,6 +26,14 @@ def edit_txt(x,a):
         except ValueError:
             print(ValueError)
             files.writelines(f)
-    return 
+    return
+def complete(u):
+    with open("/home/edward/projects/python/test.txt","r")as files:
+        f=files.readlines()
+        
+    with open("/home/edward/projects/python/test.txt","w")as files:
+        f.remove(u)
+        files.writelines(f)
+    
 
         
