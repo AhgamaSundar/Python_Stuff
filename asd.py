@@ -36,7 +36,8 @@ while True:
     elif event=="listbox":
         window['Addi'].update(value=value['listbox'][0])
     elif event=="Complete":
-        testli.complete(value['listbox'][0])
+        print(value['listbox'][0])
+        testli.complete(value['listbox'][0]+"\n")
         window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
     
                        
