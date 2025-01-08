@@ -5,11 +5,15 @@ def Realtd():
 def writeltd(x):
     with open("/home/edward/projects/python/test.txt","r")as files:
         f=files.readlines()
-        
+           
     with open("/home/edward/projects/python/test.txt","w")as files:
-        f.append(x)
-        files.writelines(f)
+        try:
         
+            f.append(x)
+            files.writelines(f)
+        except:
+            
+            files.writelines    
     return
 def edit_txt(x,a):
     with open("/home/edward/projects/python/test.txt","r")as files:
@@ -20,20 +24,23 @@ def edit_txt(x,a):
         try:
             
             
-            asd=f.index(x[0])
+            asd=f.index(x[0]+"\n")
             f[asd]=a
             files.writelines(f)
-        except ValueError:
-            print(ValueError)
+        except:
+           
             files.writelines(f)
+       
     return
 def complete(u):
     with open("/home/edward/projects/python/test.txt","r")as files:
         f=files.readlines()
         
     with open("/home/edward/projects/python/test.txt","w")as files:
-        f.remove(u)
-        files.writelines(f)
+        try:                  
+            f.remove(u)
+        finally:
+            files.writelines(f)
     
 
         
