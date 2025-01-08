@@ -1,6 +1,9 @@
 import FreeSimpleGUI as sg                        
 import testli
 import time
+
+
+
 # Define the window's contents
 dlabel=sg.Text('',key='clock' ,text_color="white",background_color="black")
 label=sg.Text("Todo" ,background_color="black")
@@ -43,9 +46,12 @@ while True:
     elif event=="listbox":
         window['Addi'].update(value=value['listbox'][0])
     elif event=="Complete":
-        print(value['listbox'][0])
-        testli.complete(value['listbox'][0]+"\n")
-        window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
+        if value['listbox']:
+            
+            testli.complete(value['listbox'][0]+"\n")
+            window['listbox'].update(values=[i[:-1] for i in testli.Realtd()])
+        else:
+            sg.popup("Please select a task",font=20)
     
     window['clock'].update(value=time.strftime("%b %d,%Y %H:%M:%S"))
                        

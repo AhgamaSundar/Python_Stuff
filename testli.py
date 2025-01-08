@@ -1,3 +1,10 @@
+import os
+
+if not os.path.exists('test.txt'):
+    with open("test.txt","w") as file:
+        pass
+
+
 def Realtd():
     with open("/home/edward/projects/python/test.txt","r")as files:
         content=files.readlines()
