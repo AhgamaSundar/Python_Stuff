@@ -8,7 +8,7 @@ if not os.path.exists('test.txt'):
 def Realtd():
     with open("/home/edward/projects/python/test.txt","r")as files:
         content=files.readlines()
-        return content
+    return content
 def writeltd(x):
     with open("/home/edward/projects/python/test.txt","r")as files:
         f=files.readlines()
@@ -44,10 +44,9 @@ def complete(u):
         f=files.readlines()
         
     with open("/home/edward/projects/python/test.txt","w")as files:
-        try:                  
-            f.remove(u)
-        finally:
-            files.writelines(f)
+        f.remove(u)       
+        files.writelines(f)
+    return
     
 
         
