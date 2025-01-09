@@ -16,7 +16,7 @@ count=0
 for i, n in enumerate(todos):
     st.checkbox(n,key=i)
     if st.session_state[i]==True: #handle duplicate
-        tt.complete(i)
+        tt.complete(n)
         del st.session_state[i]
         st.rerun()
    
