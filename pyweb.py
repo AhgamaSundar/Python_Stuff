@@ -2,10 +2,23 @@ import streamlit as st
 import testli as tt
 
 todos=tt.Realtd()
+def addtodo():
+    if st.session_state['New_one'].isalnum():
+        
+        todo=st.session_state['New_one']+"\n"
+        todos.append(todo)
+        tt.writeltd(todo)
+        print(todo)
+   
 st.title("My TODO app")
 st.subheader("Lists of Tasks Todo")
-cnt=0
+count=0
 for i in todos:
-    st.checkbox(i,key=cnt)
-    cnt+=1
-st.text_input(label="",placeholder="Enter a New Task To Add")
+    st.checkbox(i,key=i)
+    if st.session_state[i]==True:
+        tt.complete(i)
+        del st.session_state[i]
+        st.rerun()
+   
+st.text_input(label="Txt",placeholder="Enter a New Task To Add",
+              on_change=addtodo,key="New_one")
