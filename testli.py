@@ -6,14 +6,14 @@ if not os.path.exists('test.txt'):
 
 
 def Realtd():
-    with open("/home/edward/projects/python/test.txt","r")as files:
+    with open("test.txt","r")as files:
         content=files.readlines()
         return content
 def writeltd(x):
-    with open("/home/edward/projects/python/test.txt","r")as files:
+    with open("test.txt","r")as files:
         f=files.readlines()
            
-    with open("/home/edward/projects/python/test.txt","w")as files:
+    with open("test.txt","w")as files:
         try:
         
             f.append(x)
@@ -23,10 +23,10 @@ def writeltd(x):
             files.writelines    
     return
 def edit_txt(x,a):
-    with open("/home/edward/projects/python/test.txt","r")as files:
+    with open("test.txt","r")as files:
         f=files.readlines()
         
-    with open("/home/edward/projects/python/test.txt","w")as files:
+    with open("test.txt","w")as files:
         
         try:
             
@@ -40,10 +40,10 @@ def edit_txt(x,a):
        
     return
 def complete(u):
-    with open("/home/edward/projects/python/test.txt","r")as files:
+    with open("test.txt","r")as files:
         f=files.readlines()
         
-    with open("/home/edward/projects/python/test.txt","w")as files:
+    with open("test.txt","w")as files:
         try:                  
             f.remove(u)
         finally:
