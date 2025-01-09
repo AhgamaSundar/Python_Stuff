@@ -13,9 +13,9 @@ def addtodo():
 st.title("My TODO app")
 st.subheader("Lists of Tasks Todo")
 count=0
-for i in todos:
-    st.checkbox(i,key=i)
-    if st.session_state[i]==True:
+for i, n in enumerate(todos):
+    st.checkbox(n,key=i)
+    if st.session_state[i]==True: #handle duplicate
         tt.complete(i)
         del st.session_state[i]
         st.rerun()
